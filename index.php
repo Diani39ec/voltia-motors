@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOLTIA Motors — Siente la electricidad</title>
-<meta name="description" content="VOLTIA Motors: tienda de vehículos eléctricos e híbridos. Diseño original © 2026 Diana Trujillo.">
-<meta name="author" content="Diana Trujillo">
-<meta name="copyright" content="© 2026 VOLTIA Motors / Diana Trujillo. Todos los derechos reservados.">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body oncontextmenu="return false">
-<div class="watermark" aria-hidden="true">VOLTIA © 2026</div>
-
-<header class="nav">
-  <a class="brand" href="#top" aria-label="VOLTIA inicio">
-    <img src="logo.svg" alt="Logo VOLTIA" width="44" height="44" draggable="false">
-    <span>VOLTIA<em>motors</em></span>
-  </a>
-  <nav aria-label="Principal">
-    <a href="#modelos">Modelos</a>
-    <a href="#configura">Configura</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#testimonios">Opiniones</a>
-  </nav>
-  <a href="#prueba" class="btn neon">Agenda tu prueba ⚡</a>
-  <button id="menu" aria-label="Abrir menú">☰</button>
-</header>
+<?php // VOLTIA Motors · Portada (PHP + parciales + formulario con backend) ?>
+<?php require __DIR__ . '/partials/header.php'; ?>
 
 <main id="top">
   <!-- HERO -->
@@ -71,7 +44,7 @@
     <span>⚡ VOLTIA-ONE ⚡ VOLTIA PULSE ⚡ VOLTIA TERRA ⚡ 0 EMISIONES ⚡ CARGA EN 18 MIN ⚡&nbsp;</span><span>⚡ VOLTIA-ONE ⚡ VOLTIA PULSE ⚡ VOLTIA TERRA ⚡ 0 EMISIONES ⚡ CARGA EN 18 MIN ⚡&nbsp;</span>
   </div></div>
 
-  <!-- MODELOS -->
+  <!-- MODELOS (se cargan desde api/modelos.php con respaldo local) -->
   <section id="modelos" class="sec">
     <h2>Elige tu <span class="grad">rayo</span></h2>
     <div class="filters" role="group" aria-label="Filtrar modelos">
@@ -134,24 +107,17 @@
     </div>
   </section>
 
-  <!-- FORM -->
+  <!-- FORM (POST a guardar-prueba.php; el JS lo envía por fetch y muestra la respuesta) -->
   <section id="prueba" class="sec">
     <h2>Agenda tu prueba <span class="grad">gratis</span> ⚡</h2>
-    <form id="form" class="form" novalidate>
-      <div><label for="nombre">Nombre:</label><input id="nombre" required placeholder="Tu nombre" autocomplete="name"></div>
-      <div><label for="tel">WhatsApp:</label><input id="tel" required placeholder="+593 ..." autocomplete="tel"></div>
-      <div><label for="modelo">Modelo:</label><select id="modelo"><option>Voltia-One ⚡</option><option>Pulse Híbrido 🌿</option><option>Terra 4x4 ⚡</option></select></div>
+    <form id="form" class="form" action="guardar-prueba.php" method="POST" novalidate>
+      <div><label for="nombre">Nombre:</label><input id="nombre" name="nombre" required placeholder="Tu nombre" autocomplete="name"></div>
+      <div><label for="tel">WhatsApp:</label><input id="tel" name="tel" required placeholder="+593 ..." autocomplete="tel"></div>
+      <div><label for="modelo">Modelo:</label><select id="modelo" name="modelo"><option>Voltia-One ⚡</option><option>Pulse Híbrido 🌿</option><option>Terra 4x4 ⚡</option></select></div>
       <button class="btn neon big" type="submit">Quiero mi prueba 🚀</button>
       <p id="ok" role="status"></p>
     </form>
   </section>
 </main>
 
-<footer>
-  <img src="logo.svg" alt="" width="36" height="36" draggable="false">
-  <p><strong>VOLTIA Motors</strong> · Diseño, logo y textos originales · Fotos de autos: Unsplash (licencia de uso libre).</p>
-  <p>© 2026 VOLTIA Motors · Diana Trujillo (@Diani39ec) · Todos los derechos reservados · Prohibida la reproducción total o parcial.</p>
-</footer>
-<script src="app.js"></script>
-</body>
-</html>
+<?php require __DIR__ . '/partials/footer.php'; ?>

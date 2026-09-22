@@ -30,6 +30,14 @@
     {n:'Terra 4x4 ⚡',t:'electrico',img:U+'photo-1533473359331-0135ef1b58bf'+Q,alt:'SUV blanca todoterreno',km:'480 km',p:'$42.990',f:['Tracción total','480 km autonomía','Sube donde sea']}
   ];
   const FALLBACK=U+'photo-1494976388531-d1058494cdd8'+Q;
+  // Modelos profesionales: intenta la API PHP/MySQL y usa el respaldo local si falla
+  fetch('api/modelos.php').then(r=>r.json()).then(d=>{
+    if(d.ok&&d.modelos&&d.modelos.length){
+      d.modelos.forEach((m,i)=>{ if(MODELS[i]){ MODELS[i].n=m.nombre; MODELS[i].t=m.tipo; MODELS[i].p=m.precio; MODELS[i].img=m.foto_url; MODELS[i].alt=m.foto_alt; }});
+      const act=document.querySelector('.chip.active');
+      paint(act?act.dataset.f:'all');
+    }
+  }).catch(()=>{});
   const grid=$('grid');
   function paint(f){
     grid.innerHTML=MODELS.filter(m=>f==='all'||m.t===f).map(m=>
@@ -76,10 +84,17 @@
   function auto(){clearInterval(timer);timer=setInterval(()=>go(si+1),4500);}
   dots.forEach((d,i)=>d.onclick=()=>{go(i);auto();});auto();
 
-  /* ---------- Formulario ---------- */
-  $('form').onsubmit=e=>{e.preventDefault();
+  /* ---------- Formulario → backend PHP (fetch + degradado a POST normal) ---------- */
+  const form=$('form');
+  form.addEventListener('submit',e=>{
     const n=$('nombre').value.trim(),t=$('tel').value.trim();
-    if(n.length<2||t.length<6){$('ok').textContent='⚠️ Escribe tu nombre y un WhatsApp válido.';return;}
-    $('ok').textContent=`✅ ¡Gracias ${n}! Te escribiremos al ${t} para tu prueba en el ${$('modelo').value}. ⚡`;
-    e.target.querySelector('button').textContent='¡Agendado! 🎉';};
+    if(n.length<2||t.length<6){$('ok').textContent='⚠️ Escribe tu nombre y un WhatsApp válido.';e.preventDefault();return;}
+    if(!window.fetch)return; // sin fetch: el navegador hace el POST clásico
+    e.preventDefault();
+    $('ok').textContent='⏳ Enviando…';
+    fetch(form.action,{method:'POST',body:new FormData(form)}).then(r=>r.json()).then(d=>{
+      $('ok').textContent=(d.ok?'✅ ':'⚠️ ')+d.msg;
+      if(d.ok)form.querySelector('button').textContent='¡Agendado! 🎉';
+    }).catch(()=>{$('ok').textContent='⚠️ Sin conexión, inténtalo de nuevo.';});
+  });
 })();

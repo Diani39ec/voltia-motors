@@ -6,6 +6,18 @@ Tienda de vehículos eléctricos e híbridos. Marca, logo, textos e ilustracione
 ```
 http://localhost/voltia-motors/
 ```
+El formulario guarda en MySQL (`guardar-prueba.php`). Panel admin: `http://localhost/voltia-motors/admin/?key=voltia2026`
+
+## Arquitectura profesional
+| Capa | Tecnología | Archivo |
+|---|---|---|
+| Vista | PHP + parciales reutilizables | `index.php`, `partials/` |
+| Estilo + animación | CSS3 (keyframes, 3D, reflection) | `styles.css` |
+| Interactividad | JavaScript (fetch, tilt 3D, slider) | `app.js` |
+| API | PHP + JSON (modelos desde MySQL) | `api/modelos.php` |
+| Backend | PHP 8 + PDO + validación | `guardar-prueba.php`, `config.php` |
+| Datos | MySQL (`modelos`, `pruebas`) | `db/voltia_db.sql` |
+| Admin | PHP con llave + estados + WhatsApp | `admin/index.php` |
 
 ## Fotos reales + plato giratorio
 - **Hero**: el Voltia-One (Camaro azul real) gira en un **plato giratorio**: plataforma con luz rotativa, anillo orbital, balanceo 3D (`rotateY`), reflejo en el piso y barrido de brillo.
