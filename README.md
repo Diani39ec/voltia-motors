@@ -1,56 +1,47 @@
-# ⚡ VOLTIA Motors — Landing interactiva para tienda de vehículos
+# ⚡ VOLTIA Motors — Tienda de vehículos · Por Diana Trujillo
 
-Tienda de vehículos eléctricos e híbridos con fotos reales, plato giratorio 3D y backend PHP + MySQL.
+Landing interactiva de concesionario: plato giratorio 3D con fotos reales, franja de auto en movimiento, configurador de modelo y tono, formulario que guarda en MySQL y panel admin.
 
-## Ver demo
+## Demo local
 ```
 http://localhost/voltia-motors/
 ```
-El formulario guarda en MySQL (`guardar-prueba.php`). Panel admin: `http://localhost/voltia-motors/admin/?key=voltia2026`
+- Formulario → `guardar-prueba.php` (valida y guarda; respaldo en CSV si MySQL falla)
+- 🔑 Admin: `http://localhost/voltia-motors/admin/?key=voltia2026`
 
-## Arquitectura profesional
-| Capa | Tecnología | Archivo |
-|---|---|---|
-| Vista | PHP + parciales reutilizables | `index.php`, `partials/` |
-| Estilo + animación | CSS3 (keyframes, 3D, reflection) | `styles.css` |
-| Interactividad | JavaScript (fetch, tilt 3D, slider) | `app.js` |
-| API | PHP + JSON (modelos desde MySQL) | `api/modelos.php` |
-| Backend | PHP 8 + PDO + validación | `guardar-prueba.php`, `config.php` |
-| Datos | MySQL (`modelos`, `pruebas`) | `db/voltia_db.sql` |
-| Admin | PHP con llave + estados + WhatsApp | `admin/index.php` |
-
-## Fotos reales + plato giratorio
-- **Hero**: el Voltia-One gira en un **plato giratorio**: plataforma con luz rotativa, anillo orbital, balanceo 3D (`rotateY`), reflejo en el piso y barrido de brillo.
-- **Franja en movimiento**: foto real con paneo de cámara y líneas de velocidad.
-- **Modelos**: fotos reales (deportivo, sedán en movimiento con motion-blur, SUV 4x4) con zoom al hover + brillo.
-- **Configurador**: cambia de modelo en el plato y aplica tonos de pintura en vivo.
-- Fotos: Unsplash con licencia de uso libre (crédito en el footer). Si una foto falla, hay imagen de respaldo automática.
-
-## Protección (disuasoria)
-| Capa | Dónde |
-|---|---|
-| Clic derecho desactivado | `partials/header.php` (`oncontextmenu`) + `app.js` |
-| Arrastrar / guardar imágenes bloqueado | CSS `pointer-events:none` + JS `dragstart` |
-| Selección limitada en galerías/logo | clase `.noselect` |
-| Atajos Ver código / Guardar bloqueados | `keydown` en `app.js` |
-| Marca de agua tenue | `.watermark` en `partials/header.php`/`styles.css` |
-
-> Nota técnica: nada en la web es 100% incopiable; estas capas solo dificultan la copia casual.
-
-## Archivos
+## Estructura del proyecto
 ```
 voltia-motors/
-├── index.php        · portada
-├── partials/        · cabecera y pie compartidos
-├── styles.css       · estilos y animaciones
-├── app.js           · interactividad
-├── logo.svg         · logotipo
-├── api/             · API JSON de modelos
-├── admin/           · panel de solicitudes
-├── db/              · esquema MySQL
-├── config.php       · configuración
-├── guardar-prueba.php · backend del formulario
+├── index.php           · Portada (usa parciales): hero, motion, modelos, configurador, form
+├── partials/
+│   ├── header.php      · <head>, nav, botón de prueba
+│   └── footer.php      · Pie con autoría + <script>
+├── app.js              · Modelos desde la API (respaldo local), plato giratorio,
+│                         filtros, slider, contadores, formulario por fetch, protección
+├── styles.css          · Tema neón nocturno + turntable 3D + reflejo + shine
+├── logo.svg            · Hexágono + rayo en degradado voltio→violeta
+├── config.php          · Conexión PDO + clean() + ADMIN_KEY
+├── api/modelos.php     · JSON de modelos desde MySQL
+├── guardar-prueba.php  · Guarda solicitud de prueba (POST → JSON)
+├── admin/index.php     · Solicitudes con estados y reclamo por WhatsApp
+├── db/voltia_db.sql    · Esquema + 3 modelos
 └── README.md
 ```
 
-© 2026 VOLTIA Motors · Diana Trujillo
+## Base de datos `voltia_db`
+| Tabla | Guarda |
+|---|---|
+| `modelos` | nombre, tipo (electrico/hibrido), precio, autonomía, 0–100, carga, foto |
+| `pruebas` | nombre, WhatsApp, modelo, estado (nueva/contactada/agendada/vendida) |
+
+## Instalación
+```powershell
+Get-Content db/voltia_db.sql -Raw | mysql -u root
+```
+
+## Stack
+PHP 8 + MySQL + JavaScript (fetch/JSON) + CSS3 (3D, keyframes).
+
+Fotos de autos: Unsplash (licencia de uso libre), verificadas una por una.
+
+© 2026 VOLTIA Motors · Hecho por **Diana Trujillo**
