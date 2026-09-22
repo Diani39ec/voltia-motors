@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOLTIA Motors — Siente la electricidad</title>
 <meta name="description" content="VOLTIA Motors: tienda de vehículos eléctricos e híbridos.">
+<meta name="author" content="Diana Trujillo">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>

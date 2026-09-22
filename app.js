@@ -9,7 +9,7 @@
     if((e.ctrlKey&&(e.key==='u'||e.key==='s'||e.key==='c'))&&!e.target.matches('input,textarea'))e.preventDefault();
     if(e.key==='F12')e.preventDefault();
   });
-  console.log('%cVOLTIA Motors ⚡','color:#00e5ff;font-size:14px');
+  console.log('%cVOLTIA Motors ⚡ · Diana Trujillo','color:#00e5ff;font-size:14px');
 
   /* ---------- Menú móvil ---------- */
   $('menu').onclick=()=>document.querySelector('.nav').classList.toggle('open');

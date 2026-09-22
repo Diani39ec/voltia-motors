@@ -53,4 +53,4 @@ voltia-motors/
 └── README.md
 ```
 
-© 2026 VOLTIA Motors
+© 2026 VOLTIA Motors · Diana Trujillo
