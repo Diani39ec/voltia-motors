@@ -47,21 +47,16 @@
       </div>
     </div>
     <div class="hero-art noselect" aria-hidden="true">
-      <div class="moon"></div>
-      <div class="city"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <!-- Auto 100% dibujado en SVG original -->
-      <svg class="car" viewBox="0 0 560 200">
-        <ellipse class="glow" cx="280" cy="172" rx="220" ry="18"/>
-        <path class="body" d="M40 140 L80 100 L160 92 L210 60 L350 60 L400 92 L510 100 L525 130 L515 142 L40 142 Z"/>
-        <path class="glass" d="M220 68 L340 68 L375 92 L180 92 Z"/>
-        <rect class="light-f" x="505" y="112" width="18" height="10" rx="5"/>
-        <rect class="light-b" x="38" y="114" width="12" height="10" rx="5"/>
-        <g class="wheel w1"><circle cx="150" cy="148" r="30"/><circle cx="150" cy="148" r="12" class="hub"/><line x1="150" y1="122" x2="150" y2="174"/><line x1="124" y1="148" x2="176" y2="148"/></g>
-        <g class="wheel w2"><circle cx="420" cy="148" r="30"/><circle cx="420" cy="148" r="12" class="hub"/><line x1="420" y1="122" x2="420" y2="174"/><line x1="394" y1="148" x2="446" y2="148"/></g>
-        <path class="ray" d="M285 20 l-18 30 h12 l-8 26 26-38 h-13 z"/>
-      </svg>
-      <div class="road"><div class="dash"></div></div>
-      <div class="speed s1"></div><div class="speed s2"></div><div class="speed s3"></div>
+      <div class="showroom">
+        <div class="ring"></div>
+        <div class="plato"><div class="plato-luz"></div></div>
+        <figure class="car3d">
+          <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop" alt="" draggable="false" fetchpriority="high"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop'">
+          <span class="shine"></span>
+        </figure>
+        <div class="badges"><span>⚡ 520 km</span><span>🚀 3,9 s 0–100</span></div>
+      </div>
     </div>
   </section>
 
@@ -83,24 +78,28 @@
   <!-- CONFIGURADOR -->
   <section id="configura" class="sec alt">
     <h2>Píntalo a tu <span class="grad">estilo</span></h2>
-    <p>Toca un color y mira cómo el Voltia-One cambia en vivo. Así se sentirá en tu garaje.</p>
+    <p>Toca un modelo, míralo girar en el plato y cambia su tono. Así se sentirá en tu garaje.</p>
     <div class="conf">
-      <svg class="car big" viewBox="0 0 560 200" aria-label="Vista previa del auto en el color elegido">
-        <ellipse class="glow" cx="280" cy="172" rx="220" ry="18"/>
-        <path class="body" id="conf-body" d="M40 140 L80 100 L160 92 L210 60 L350 60 L400 92 L510 100 L525 130 L515 142 L40 142 Z"/>
-        <path class="glass" d="M220 68 L340 68 L375 92 L180 92 Z"/>
-        <rect class="light-f" x="505" y="112" width="18" height="10" rx="5"/>
-        <rect class="light-b" x="38" y="114" width="12" height="10" rx="5"/>
-        <g class="wheel w1"><circle cx="150" cy="148" r="30"/><circle cx="150" cy="148" r="12" class="hub"/></g>
-        <g class="wheel w2"><circle cx="420" cy="148" r="30"/><circle cx="420" cy="148" r="12" class="hub"/></g>
-      </svg>
-      <div class="swatches" role="group" aria-label="Colores">
-        <button style="--c:#00e5ff" data-c="#00e5ff" aria-label="Azul voltio"></button>
-        <button style="--c:#ff2d78" data-c="#ff2d78" aria-label="Rosa plasma"></button>
-        <button style="--c:#a3ff12" data-c="#a3ff12" aria-label="Lima neón"></button>
-        <button style="--c:#ffb300" data-c="#ffb300" aria-label="Ámbar"></button>
-        <button style="--c:#7c3aed" data-c="#7c3aed" aria-label="Violeta"></button>
-        <button style="--c:#e8e8e8" data-c="#e8e8e8" aria-label="Blanco luna"></button>
+      <div class="model-btns" role="group" aria-label="Elegir modelo">
+        <button class="mbtn sel" data-m="0">Voltia-One</button>
+        <button class="mbtn" data-m="1">Pulse</button>
+        <button class="mbtn" data-m="2">Terra 4x4</button>
+      </div>
+      <div class="showroom small">
+        <div class="ring"></div>
+        <div class="plato"><div class="plato-luz"></div></div>
+        <figure class="car3d">
+          <img id="conf-foto" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop" alt="Vista previa del modelo en el plato giratorio" draggable="false">
+          <span class="shine"></span>
+        </figure>
+      </div>
+      <div class="swatches" role="group" aria-label="Tono de pintura">
+        <button class="sel" style="--c:#00e5ff" data-h="0deg" aria-label="Azul voltio"></button>
+        <button style="--c:#ff2d78" data-h="140deg" aria-label="Rosa plasma"></button>
+        <button style="--c:#a3ff12" data-h="60deg" aria-label="Lima neón"></button>
+        <button style="--c:#ffb300" data-h="-40deg" aria-label="Ámbar"></button>
+        <button style="--c:#7c3aed" data-h="90deg" aria-label="Violeta"></button>
+        <button style="--c:#e8e8e8" data-h="0deg" data-bn="1" aria-label="Blanco luna"></button>
       </div>
       <p class="precio">Voltia-One · <strong id="conf-precio">$34.990</strong> <small>o $499/mes</small></p>
       <a href="#prueba" class="btn neon">Lo quiero 🙋</a>
@@ -143,7 +142,7 @@
 
 <footer>
   <img src="logo.svg" alt="" width="36" height="36" draggable="false">
-  <p><strong>VOLTIA Motors</strong> · Diseño, logo, textos e ilustraciones originales.</p>
+  <p><strong>VOLTIA Motors</strong> · Diseño, logo y textos originales · Fotos de autos: Unsplash (licencia de uso libre).</p>
   <p>© 2026 VOLTIA Motors · Diana Trujillo (@Diani39ec) · Todos los derechos reservados · Prohibida la reproducción total o parcial.</p>
 </footer>
 <script src="app.js"></script>

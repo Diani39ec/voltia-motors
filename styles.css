@@ -105,3 +105,31 @@ input,select{width:100%;padding:.7rem;border-radius:10px;border:2px solid #3b3b6
 #ok{color:var(--neon);font-weight:700}
 footer{text-align:center;padding:2rem 1rem;color:var(--mut);border-top:1px solid #2a2a4a}
 @media(max-width:860px){.hero{grid-template-columns:1fr}.nav nav{display:none}.nav.open nav{display:flex;position:absolute;top:60px;right:10px;flex-direction:column;background:#16162c;padding:1rem;border-radius:12px}#menu{display:block}}
+/* ===== Plato giratorio + fotos reales ===== */
+.showroom{position:relative;height:380px;perspective:1000px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.showroom.small{height:340px;max-width:640px;margin:auto}
+.plato{position:absolute;bottom:44px;width:min(500px,94%);height:110px}
+.plato::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at center,#2b2b55 0%,#14142a 62%,#0b0b18 72%);border:2px solid #3b3b6e;box-shadow:0 18px 50px rgba(0,0,0,.6)}
+.plato-luz{position:absolute;inset:6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 40deg,rgba(0,229,255,.35) 60deg,transparent 90deg,transparent 180deg,rgba(124,58,237,.35) 210deg,transparent 240deg);animation:plato 7s linear infinite;filter:blur(2px)}
+@keyframes plato{to{transform:rotate(360deg)}}
+.ring{position:absolute;bottom:60px;width:min(430px,84%);height:150px;border-radius:50%;border:2px dashed rgba(0,229,255,.45);animation:plato 14s linear infinite reverse;box-shadow:0 0 26px rgba(0,229,255,.25)}
+.car3d{position:relative;width:min(520px,96%);margin:0 0 78px;transform-style:preserve-3d;animation:sway 6s ease-in-out infinite alternate;z-index:2}
+.showroom.small .car3d{margin-bottom:70px}
+@keyframes sway{from{transform:rotateY(-14deg) translateY(0)}to{transform:rotateY(14deg) translateY(-10px)}}
+.car3d img{width:100%;height:230px;object-fit:cover;border-radius:18px;border:2px solid rgba(0,229,255,.5);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 34px rgba(0,229,255,.25);-webkit-box-reflect:below 8px linear-gradient(transparent 62%,rgba(255,255,255,.28))}
+.showroom.small .car3d img{height:200px}
+.car3d .shine{position:absolute;inset:0;border-radius:18px;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.45) 50%,transparent 60%);background-size:250% 100%;animation:shine 3.8s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%{background-position:120% 0}60%,100%{background-position:-120% 0}}
+.badges{position:absolute;top:6px;display:flex;gap:.6rem;z-index:3}
+.badges span{background:rgba(11,11,24,.8);border:1px solid var(--neon);color:var(--neon);border-radius:20px;padding:.3rem .9rem;font-weight:800;font-size:.9rem;animation:float 4s ease-in-out infinite alternate}
+.badges span:last-child{animation-delay:1s}
+/* Fotos en tarjetas de modelos */
+.mcard .foto{position:relative;overflow:hidden;border-radius:14px;margin:-.2rem -.2rem .8rem}
+.mcard .foto img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .6s}
+.mcard:hover .foto img{transform:scale(1.12)}
+.mcard .foto .shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);background-size:250% 100%;animation:shine 4.5s ease-in-out infinite;pointer-events:none}
+.mcard .foto .km{position:absolute;left:.6rem;bottom:.6rem;background:rgba(11,11,24,.85);border:1px solid var(--neon);color:var(--neon);border-radius:14px;padding:.15rem .7rem;font-size:.8rem;font-weight:800}
+/* Botones de modelo en configurador */
+.model-btns{display:flex;gap:.6rem;justify-content:center;margin-bottom:.4rem;flex-wrap:wrap}
+.mbtn{background:#1c1c34;color:#fff;border:1px solid #3b3b6e;border-radius:20px;padding:.55rem 1.2rem;cursor:pointer;font-weight:800}
+.mbtn.sel{background:linear-gradient(90deg,var(--neon),var(--vio));color:#001318}

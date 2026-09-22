@@ -22,15 +22,18 @@
   $('menu').onclick=()=>document.querySelector('.nav').classList.toggle('open');
 
   /* ---------- Modelos ---------- */
+  const U='https://images.unsplash.com/';
+  const Q='?q=80&w=900&auto=format&fit=crop';
   const MODELS=[
-    {n:'Voltia-One ⚡',t:'electrico',e:'🚗',p:'$34.990',f:['520 km autonomía','0–100 en 3,9 s','Carga 80% en 18 min']},
-    {n:'Pulse Híbrido 🌿',t:'hibrido',e:'🚙',p:'$24.990',f:['900 km combinados','57 km/l','Ideal ciudad + carretera']},
-    {n:'Terra 4x4 ⚡',t:'electrico',e:'🛻',p:'$42.990',f:['Tracción total','480 km autonomía','Sube donde sea']}
+    {n:'Voltia-One ⚡',t:'electrico',img:U+'photo-1552519507-da3b142c6e3d'+Q,alt:'Deportivo azul en el desierto',km:'520 km',p:'$34.990',f:['520 km autonomía','0–100 en 3,9 s','Carga 80% en 18 min']},
+    {n:'Pulse Híbrido 🌿',t:'hibrido',img:U+'photo-1503376780353-7e6692767b70'+Q,alt:'Sedán negro en movimiento en carretera',km:'900 km',p:'$24.990',f:['900 km combinados','57 km/l','Ideal ciudad + carretera']},
+    {n:'Terra 4x4 ⚡',t:'electrico',img:U+'photo-1533473359331-0135ef1b58bf'+Q,alt:'SUV blanca todoterreno',km:'480 km',p:'$42.990',f:['Tracción total','480 km autonomía','Sube donde sea']}
   ];
+  const FALLBACK=U+'photo-1494976388531-d1058494cdd8'+Q;
   const grid=$('grid');
   function paint(f){
     grid.innerHTML=MODELS.filter(m=>f==='all'||m.t===f).map(m=>
-      `<article class="mcard" data-tilt><div class="emoji">${m.e}</div><h3>${m.n}</h3><p class="price">${m.p}</p><ul>${m.f.map(x=>`<li>${x}</li>`).join('')}</ul><a href="#prueba" class="btn neon">Probarlo</a></article>`).join('');
+      `<article class="mcard" data-tilt><div class="foto"><img src="${m.img}" alt="${m.alt}" loading="lazy" draggable="false" onerror="this.onerror=null;this.src='${FALLBACK}'"><span class="shine"></span><span class="km">⚡ ${m.km}</span></div><h3>${m.n}</h3><p class="price">${m.p}</p><ul>${m.f.map(x=>`<li>${x}</li>`).join('')}</ul><a href="#prueba" class="btn neon">Probarlo</a></article>`).join('');
     grid.querySelectorAll('[data-tilt]').forEach(c=>{
       c.onmousemove=e=>{const r=c.getBoundingClientRect();
         c.style.transform=`perspective(700px) rotateY(${(e.clientX-r.left)/r.width*10-5}deg) rotateX(${5-(e.clientY-r.top)/r.height*10}deg)`;};
@@ -42,12 +45,19 @@
     document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
     ch.classList.add('active');paint(ch.dataset.f);});
 
-  /* ---------- Configurador de color ---------- */
+  /* ---------- Configurador: plato + modelo + tono ---------- */
+  const confFoto=$('conf-foto');
+  confFoto.onerror=()=>{confFoto.onerror=null;confFoto.src=FALLBACK;};
+  document.querySelectorAll('.mbtn').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.mbtn').forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel');
+    confFoto.style.opacity=0;
+    setTimeout(()=>{confFoto.src=MODELS[+b.dataset.m].img;confFoto.onload=()=>confFoto.style.opacity=1;},250);});
+  confFoto.style.transition='opacity .25s';
   document.querySelectorAll('.swatches button').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('.swatches button').forEach(x=>x.classList.remove('sel'));
     b.classList.add('sel');
-    document.documentElement.style.setProperty('--car',b.dataset.c);
-    $('conf-body').style.fill=b.dataset.c;});
+    confFoto.style.filter=b.hasAttribute('data-bn')?'grayscale(1) brightness(1.15)':`hue-rotate(${b.dataset.h}) saturate(1.3)`;});
 
   /* ---------- Contadores ---------- */
   const io=new IntersectionObserver(es=>es.forEach(e=>{

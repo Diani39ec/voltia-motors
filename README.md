@@ -7,10 +7,11 @@ Tienda de vehículos eléctricos e híbridos. Marca, logo, textos e ilustracione
 http://localhost/voltia-motors/
 ```
 
-## Originalidad
-- **Logo** `logo.svg`: hexágono + rayo, dibujado a mano en vectores (gradiente voltio→violeta).
-- **Auto animado**: SVG propio (carrocería, vidrios, ruedas que giran, rayo, neón) + carretera con líneas en movimiento, ciudad con luces, luna flotante, partículas de velocidad.
-- **Interactividad**: configurador de color en vivo, filtros de modelos, tarjetas 3D tilt, contadores animados, slider de opiniones, marquesina infinita, formulario con validación.
+## Fotos reales + plato giratorio
+- **Hero**: el Voltia-One (Camaro azul real) gira en un **plato giratorio**: plataforma con luz rotativa, anillo orbital, balanceo 3D (`rotateY`), reflejo en el piso y barrido de brillo.
+- **Modelos**: fotos reales verificadas (deportivo, sedán en movimiento con motion-blur, SUV 4x4) con zoom al hover + brillo.
+- **Configurador**: cambia de modelo en el plato y aplica tonos de pintura en vivo.
+- Fotos: Unsplash con licencia de uso libre (crédito en el footer). Si una foto falla, hay imagen de respaldo automática.
 
 ## Blindaje anti-copia (disuasorio)
 | Capa | Dónde |
