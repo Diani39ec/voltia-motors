@@ -1,0 +1,107 @@
+/* VOLTIA Motors © 2026 Diana Trujillo — diseño original. Prohibida la reproducción. */
+:root{--bg:#0b0b18;--bg2:#141428;--ink:#f4f4ff;--mut:#a7a7c7;--neon:#00e5ff;--vio:#7c3aed;--rosa:#ff2d78;--car:#00e5ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Segoe UI,Arial,sans-serif;overflow-x:hidden}
+.noselect,.hero-art,.marquee,.brand img,footer img{user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+img{pointer-events:none}
+/* Marca de agua anti-copia */
+.watermark{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);font-size:9vw;font-weight:900;color:rgba(255,255,255,.035);pointer-events:none;z-index:0;white-space:nowrap}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1rem;padding:.7rem 1rem;background:rgba(11,11,24,.85);backdrop-filter:blur(10px);border-bottom:1px solid #2a2a4a}
+.brand{display:flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;font-weight:900;font-size:1.3rem;letter-spacing:1px}
+.brand em{display:block;font-style:normal;font-size:.65rem;color:var(--neon);letter-spacing:4px}
+.nav nav{display:flex;gap:1rem;margin-left:auto}
+.nav nav a{color:var(--mut);text-decoration:none;font-weight:700}
+.nav nav a:hover{color:var(--neon)}
+#menu{display:none;background:none;border:2px solid var(--neon);color:#fff;border-radius:8px;padding:.3rem .7rem}
+.btn{display:inline-block;border-radius:12px;padding:.7rem 1.2rem;font-weight:800;text-decoration:none;cursor:pointer;border:2px solid transparent}
+.btn.neon{background:linear-gradient(90deg,var(--neon),var(--vio));color:#001318;box-shadow:0 0 18px rgba(0,229,255,.5);animation:pulse 2.4s infinite}
+.btn.ghost{border-color:var(--neon);color:var(--neon)}
+.btn.big{font-size:1.1rem}
+@keyframes pulse{50%{box-shadow:0 0 34px rgba(124,58,237,.8)}}
+/* HERO */
+.hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.1fr;gap:1rem;align-items:center;max-width:1150px;margin:auto;padding:3rem 1rem 1rem}
+.tag{display:inline-block;border:1px solid var(--neon);border-radius:20px;padding:.3rem .9rem;color:var(--neon);font-size:.9rem}
+h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1;margin:.6rem 0}
+.grad{background:linear-gradient(90deg,var(--neon),var(--vio),var(--rosa));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:1.15rem}
+.cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin:1rem 0}
+.stats{display:flex;gap:1.6rem;margin-top:1rem}
+.stats strong{font-size:1.5rem;display:block;color:var(--neon)}
+.stats small{color:var(--mut)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;z-index:-1;animation:drift 9s ease-in-out infinite alternate}
+.b1{width:340px;height:340px;background:var(--vio);top:-60px;right:10%}
+.b2{width:260px;height:260px;background:#0891b2;bottom:-40px;left:-60px}
+@keyframes drift{to{transform:translate(40px,30px)}}
+/* Arte: luna + ciudad + auto + carretera */
+.hero-art{position:relative;height:340px}
+.moon{position:absolute;top:10px;right:30px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#c7d2fe);box-shadow:0 0 40px #c7d2fe;animation:float 5s ease-in-out infinite alternate}
+.city{position:absolute;bottom:86px;left:0;right:0;display:flex;gap:8px;align-items:flex-end;opacity:.8}
+.city span{flex:1;background:linear-gradient(#2a2a5a,#12122a);border:1px solid #3b3b6e;animation:blink 3s infinite}
+.city span:nth-child(1){height:70px}.city span:nth-child(2){height:110px;animation-delay:.4s}.city span:nth-child(3){height:60px;animation-delay:.8s}.city span:nth-child(4){height:130px;animation-delay:.2s}.city span:nth-child(5){height:80px;animation-delay:1s}.city span:nth-child(6){height:120px;animation-delay:.6s}.city span:nth-child(7){height:65px}
+@keyframes blink{50%{background:linear-gradient(#3b3b8e,#1a1a3a)}}
+.car{position:absolute;bottom:66px;left:2%;width:92%;animation:drive 1.6s ease-in-out infinite;z-index:2}
+.car.big{position:static;width:min(560px,100%);animation:drive 2.4s ease-in-out infinite}
+@keyframes drive{50%{transform:translateY(-4px)}}
+@keyframes float{to{transform:translateY(-12px)}}
+.car .body{fill:var(--car);stroke:#001318;stroke-width:4}
+.car .glass{fill:#dff6ff;opacity:.9}
+.car .light-f{fill:#fff87a}.car .light-b{fill:#ff2d78}
+.car .wheel circle{fill:#15152b;stroke:#9be9ff;stroke-width:4}
+.car .wheel .hub{fill:var(--neon);stroke:none}
+.car .wheel line{stroke:#9be9ff;stroke-width:5;transform-origin:center;transform-box:fill-box}
+.w1 line{animation:spin 1s linear infinite}.w2 line{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.car .glow{fill:var(--car);opacity:.35;filter:blur(6px)}
+.car .ray{fill:#fff87a;animation:zap 1.2s infinite}
+@keyframes zap{50%{opacity:.3}}
+.road{position:absolute;bottom:40px;left:0;right:0;height:26px;background:#1c1c34;border-top:3px solid #3b3b6e}
+.dash{height:100%;background:repeating-linear-gradient(90deg,var(--neon) 0 40px,transparent 40px 80px);animation:road .6s linear infinite}
+@keyframes road{to{background-position-x:-80px}}
+.speed{position:absolute;left:-30px;width:60px;height:3px;background:var(--neon);opacity:0;animation:spd 1s linear infinite}
+.s1{bottom:120px}.s2{bottom:150px;animation-delay:.3s}.s3{bottom:100px;animation-delay:.6s}
+@keyframes spd{from{left:100%;opacity:1}to{left:-10%;opacity:0}}
+/* Marquesina */
+.marquee{overflow:hidden;border-top:1px solid #2a2a4a;border-bottom:1px solid #2a2a4a;background:#101024;padding:.6rem 0}
+.track{display:flex;width:max-content;animation:mq 18s linear infinite}
+.track span{font-weight:900;letter-spacing:2px;color:var(--neon);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* Secciones */
+.sec{max-width:1150px;margin:auto;padding:3rem 1rem}
+.sec.alt{background:var(--bg2);border-radius:24px}
+.sec h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.filters{display:flex;gap:.5rem;margin:1rem 0}
+.chip{background:#1c1c34;color:#fff;border:1px solid #3b3b6e;border-radius:20px;padding:.5rem 1.1rem;cursor:pointer}
+.chip.active{background:linear-gradient(90deg,var(--neon),var(--vio));color:#001318;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}
+.mcard{background:#16162c;border:1px solid #2f2f55;border-radius:18px;padding:1.2rem;transition:transform .25s;transform-style:preserve-3d}
+.mcard:hover{transform:translateY(-6px) rotateX(3deg);border-color:var(--neon)}
+.mcard .emoji{font-size:3rem;animation:float 4s ease-in-out infinite alternate}
+.mcard h3{margin:.4rem 0}
+.mcard ul{color:var(--mut);padding-left:1.1rem}
+.mcard .price{font-size:1.4rem;color:var(--neon);font-weight:900}
+/* Configurador */
+.conf{text-align:center}
+.swatches{display:flex;gap:.7rem;justify-content:center;margin:1rem 0}
+.swatches button{width:52px;height:52px;border-radius:50%;background:var(--c);border:3px solid #fff;cursor:pointer;transition:transform .2s}
+.swatches button:hover{transform:scale(1.2)}
+.swatches button.sel{outline:3px solid var(--neon);outline-offset:3px}
+.precio{font-size:1.3rem}
+/* Cards / slider / form */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.card{background:#16162c;border:1px solid #2f2f55;border-radius:18px;padding:1.2rem;font-size:2rem}
+.card h3{font-size:1.15rem}.card p{font-size:1rem;color:var(--mut)}
+.float{animation:float 5s ease-in-out infinite alternate}.d2{animation-delay:.7s}.d3{animation-delay:1.3s}
+.slider{max-width:700px;margin:auto;text-align:center}
+.slide{display:none;font-size:1.3rem;font-style:italic}
+.slide.active{display:block;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.slide cite{display:block;margin-top:.6rem;color:var(--neon);font-style:normal;font-size:1rem}
+.dots{display:flex;gap:.5rem;justify-content:center;margin-top:1rem}
+.dot{width:14px;height:14px;border-radius:50%;border:0;background:#3b3b6e;cursor:pointer}
+.dot.active{background:var(--neon)}
+.form{max-width:520px;margin:auto;display:grid;gap:.8rem;background:#16162c;padding:1.5rem;border-radius:18px;border:1px solid #2f2f55}
+label{font-weight:700}
+input,select{width:100%;padding:.7rem;border-radius:10px;border:2px solid #3b3b6e;background:#0b0b18;color:#fff;font-size:1rem}
+#ok{color:var(--neon);font-weight:700}
+footer{text-align:center;padding:2rem 1rem;color:var(--mut);border-top:1px solid #2a2a4a}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.nav nav{display:none}.nav.open nav{display:flex;position:absolute;top:60px;right:10px;flex-direction:column;background:#16162c;padding:1rem;border-radius:12px}#menu{display:block}}

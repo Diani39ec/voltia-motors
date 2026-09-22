@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOLTIA Motors — Siente la electricidad</title>
+<meta name="description" content="VOLTIA Motors: tienda de vehículos eléctricos e híbridos. Diseño original © 2026 Diana Trujillo.">
+<meta name="author" content="Diana Trujillo">
+<meta name="copyright" content="© 2026 VOLTIA Motors / Diana Trujillo. Todos los derechos reservados.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body oncontextmenu="return false">
+<div class="watermark" aria-hidden="true">VOLTIA © 2026</div>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="VOLTIA inicio">
+    <img src="logo.svg" alt="Logo VOLTIA" width="44" height="44" draggable="false">
+    <span>VOLTIA<em>motors</em></span>
+  </a>
+  <nav aria-label="Principal">
+    <a href="#modelos">Modelos</a>
+    <a href="#configura">Configura</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#testimonios">Opiniones</a>
+  </nav>
+  <a href="#prueba" class="btn neon">Agenda tu prueba ⚡</a>
+  <button id="menu" aria-label="Abrir menú">☰</button>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <div class="hero-txt">
+      <p class="tag">⚡ Eléctricos · Híbridos · 0 emisiones</p>
+      <h1>MANEJA EL<br><span class="grad">FUTURO</span> HOY</h1>
+      <p class="lead">Voltia no vende autos. Entrega <strong>rayos con ruedas</strong>: 0–100 en 3,9 s, 520 km de autonomía y carga del 80% en 18 minutos.</p>
+      <div class="cta-row">
+        <a href="#modelos" class="btn neon big">Ver modelos 🚗</a>
+        <a href="#prueba" class="btn ghost big">Prueba gratis</a>
+      </div>
+      <div class="stats">
+        <div><strong><span class="count" data-n="520">0</span> km</strong><small>autonomía</small></div>
+        <div><strong><span class="count" data-n="39" data-dec="1">0</span> s</strong><small>0–100 km/h</small></div>
+        <div><strong><span class="count" data-n="18">0</span> min</strong><small>carga 80%</small></div>
+      </div>
+    </div>
+    <div class="hero-art noselect" aria-hidden="true">
+      <div class="moon"></div>
+      <div class="city"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <!-- Auto 100% dibujado en SVG original -->
+      <svg class="car" viewBox="0 0 560 200">
+        <ellipse class="glow" cx="280" cy="172" rx="220" ry="18"/>
+        <path class="body" d="M40 140 L80 100 L160 92 L210 60 L350 60 L400 92 L510 100 L525 130 L515 142 L40 142 Z"/>
+        <path class="glass" d="M220 68 L340 68 L375 92 L180 92 Z"/>
+        <rect class="light-f" x="505" y="112" width="18" height="10" rx="5"/>
+        <rect class="light-b" x="38" y="114" width="12" height="10" rx="5"/>
+        <g class="wheel w1"><circle cx="150" cy="148" r="30"/><circle cx="150" cy="148" r="12" class="hub"/><line x1="150" y1="122" x2="150" y2="174"/><line x1="124" y1="148" x2="176" y2="148"/></g>
+        <g class="wheel w2"><circle cx="420" cy="148" r="30"/><circle cx="420" cy="148" r="12" class="hub"/><line x1="420" y1="122" x2="420" y2="174"/><line x1="394" y1="148" x2="446" y2="148"/></g>
+        <path class="ray" d="M285 20 l-18 30 h12 l-8 26 26-38 h-13 z"/>
+      </svg>
+      <div class="road"><div class="dash"></div></div>
+      <div class="speed s1"></div><div class="speed s2"></div><div class="speed s3"></div>
+    </div>
+  </section>
+
+  <div class="marquee noselect" aria-hidden="true"><div class="track">
+    <span>⚡ VOLTIA-ONE ⚡ VOLTIA PULSE ⚡ VOLTIA TERRA ⚡ 0 EMISIONES ⚡ CARGA EN 18 MIN ⚡&nbsp;</span><span>⚡ VOLTIA-ONE ⚡ VOLTIA PULSE ⚡ VOLTIA TERRA ⚡ 0 EMISIONES ⚡ CARGA EN 18 MIN ⚡&nbsp;</span>
+  </div></div>
+
+  <!-- MODELOS -->
+  <section id="modelos" class="sec">
+    <h2>Elige tu <span class="grad">rayo</span></h2>
+    <div class="filters" role="group" aria-label="Filtrar modelos">
+      <button class="chip active" data-f="all">Todos</button>
+      <button class="chip" data-f="electrico">⚡ Eléctricos</button>
+      <button class="chip" data-f="hibrido">🌿 Híbridos</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- CONFIGURADOR -->
+  <section id="configura" class="sec alt">
+    <h2>Píntalo a tu <span class="grad">estilo</span></h2>
+    <p>Toca un color y mira cómo el Voltia-One cambia en vivo. Así se sentirá en tu garaje.</p>
+    <div class="conf">
+      <svg class="car big" viewBox="0 0 560 200" aria-label="Vista previa del auto en el color elegido">
+        <ellipse class="glow" cx="280" cy="172" rx="220" ry="18"/>
+        <path class="body" id="conf-body" d="M40 140 L80 100 L160 92 L210 60 L350 60 L400 92 L510 100 L525 130 L515 142 L40 142 Z"/>
+        <path class="glass" d="M220 68 L340 68 L375 92 L180 92 Z"/>
+        <rect class="light-f" x="505" y="112" width="18" height="10" rx="5"/>
+        <rect class="light-b" x="38" y="114" width="12" height="10" rx="5"/>
+        <g class="wheel w1"><circle cx="150" cy="148" r="30"/><circle cx="150" cy="148" r="12" class="hub"/></g>
+        <g class="wheel w2"><circle cx="420" cy="148" r="30"/><circle cx="420" cy="148" r="12" class="hub"/></g>
+      </svg>
+      <div class="swatches" role="group" aria-label="Colores">
+        <button style="--c:#00e5ff" data-c="#00e5ff" aria-label="Azul voltio"></button>
+        <button style="--c:#ff2d78" data-c="#ff2d78" aria-label="Rosa plasma"></button>
+        <button style="--c:#a3ff12" data-c="#a3ff12" aria-label="Lima neón"></button>
+        <button style="--c:#ffb300" data-c="#ffb300" aria-label="Ámbar"></button>
+        <button style="--c:#7c3aed" data-c="#7c3aed" aria-label="Violeta"></button>
+        <button style="--c:#e8e8e8" data-c="#e8e8e8" aria-label="Blanco luna"></button>
+      </div>
+      <p class="precio">Voltia-One · <strong id="conf-precio">$34.990</strong> <small>o $499/mes</small></p>
+      <a href="#prueba" class="btn neon">Lo quiero 🙋</a>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="sec">
+    <h2>Nacimos para <span class="grad">electrizar</span> Ecuador 🇪🇨</h2>
+    <div class="cols">
+      <div class="card float">🔋<h3>Batería con garantía 8 años</h3><p>Si baja del 80%, la cambiamos. Sin letra pequeña.</p></div>
+      <div class="card float d2">🔌<h3>Carga gratis 1 año</h3><p>Red Voltia en Quito, Guayaquil y Cuenca.</p></div>
+      <div class="card float d3">🛡️<h3>Blindaje total</h3><p>Mantenimiento incluido los primeros 30.000 km.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="sec alt">
+    <h2>Lo que <span class="grad">zumban</span> los dueños</h2>
+    <div class="slider">
+      <blockquote class="slide active">“Pasé de gastar $240 en gasolina a $35 de luz. El Voltia se pagó solo.”<cite>— Karla M., Quito · Voltia-One</cite></blockquote>
+      <blockquote class="slide">“El configurador me enamoró y la prueba me convenció en 10 minutos.”<cite>— Diego P., Guayaquil · Pulse Híbrido</cite></blockquote>
+      <blockquote class="slide">“Sube a la Mitad del Mundo sin despeinarse. Potencia brutal.”<cite>— Fernanda C., Cuenca · Terra 4x4</cite></blockquote>
+      <div class="dots"><button class="dot active" aria-label="Opinión 1"></button><button class="dot" aria-label="Opinión 2"></button><button class="dot" aria-label="Opinión 3"></button></div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="prueba" class="sec">
+    <h2>Agenda tu prueba <span class="grad">gratis</span> ⚡</h2>
+    <form id="form" class="form" novalidate>
+      <div><label for="nombre">Nombre:</label><input id="nombre" required placeholder="Tu nombre" autocomplete="name"></div>
+      <div><label for="tel">WhatsApp:</label><input id="tel" required placeholder="+593 ..." autocomplete="tel"></div>
+      <div><label for="modelo">Modelo:</label><select id="modelo"><option>Voltia-One ⚡</option><option>Pulse Híbrido 🌿</option><option>Terra 4x4 ⚡</option></select></div>
+      <button class="btn neon big" type="submit">Quiero mi prueba 🚀</button>
+      <p id="ok" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <img src="logo.svg" alt="" width="36" height="36" draggable="false">
+  <p><strong>VOLTIA Motors</strong> · Diseño, logo, textos e ilustraciones originales.</p>
+  <p>© 2026 VOLTIA Motors · Diana Trujillo (@Diani39ec) · Todos los derechos reservados · Prohibida la reproducción total o parcial.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
