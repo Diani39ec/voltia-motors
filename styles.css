@@ -105,6 +105,14 @@ input,select{width:100%;padding:.7rem;border-radius:10px;border:2px solid #3b3b6
 #ok{color:var(--neon);font-weight:700}
 footer{text-align:center;padding:2rem 1rem;color:var(--mut);border-top:1px solid #2a2a4a}
 @media(max-width:860px){.hero{grid-template-columns:1fr}.nav nav{display:none}.nav.open nav{display:flex;position:absolute;top:60px;right:10px;flex-direction:column;background:#16162c;padding:1rem;border-radius:12px}#menu{display:block}}
+/* ===== Foto en movimiento ===== */
+.motion{position:relative;margin:0;overflow:hidden;max-height:420px;border-top:1px solid #2a2a4a;border-bottom:1px solid #2a2a4a}
+.motion img{width:112%;max-width:none;height:420px;object-fit:cover;display:block;animation:pan 16s ease-in-out infinite alternate}
+@keyframes pan{from{transform:translateX(0) scale(1.05)}to{transform:translateX(-9%) scale(1.12)}}
+.motion .vlines{position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 90px,rgba(0,229,255,.14) 90px 93px,transparent 93px 190px);animation:vlines 1.1s linear infinite;pointer-events:none}
+@keyframes vlines{to{transform:translateX(-190px)}}
+.motion figcaption{position:absolute;left:1.2rem;bottom:1.2rem;background:rgba(11,11,24,.82);border:1px solid var(--neon);border-radius:14px;padding:.7rem 1.1rem;font-weight:900;font-size:1.15rem;color:#fff}
+.motion figcaption small{display:block;color:var(--neon);font-weight:700;font-size:.9rem}
 /* ===== Plato giratorio + fotos reales ===== */
 .showroom{position:relative;height:380px;perspective:1000px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .showroom.small{height:340px;max-width:640px;margin:auto}
