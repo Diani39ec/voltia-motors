@@ -1,5 +1,5 @@
 <?php
-// VOLTIA Motors © 2026 Diana Trujillo — Configuración central
+// VOLTIA Motors — Configuración central
 declare(strict_types=1);
 
 define('DB_HOST', '127.0.0.1');

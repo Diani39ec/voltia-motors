@@ -1,5 +1,5 @@
 -- =====================================================
--- VOLTIA Motors · MySQL 8+ · © 2026 Diana Trujillo
+-- VOLTIA Motors · MySQL 8+
 -- Base: voltia_db (utf8mb4)
 -- =====================================================
 CREATE DATABASE IF NOT EXISTS voltia_db

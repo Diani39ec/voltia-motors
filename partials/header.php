@@ -5,14 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOLTIA Motors — Siente la electricidad</title>
-<meta name="description" content="VOLTIA Motors: tienda de vehículos eléctricos e híbridos. Diseño original © 2026 Diana Trujillo.">
-<meta name="author" content="Diana Trujillo">
-<meta name="copyright" content="© 2026 VOLTIA Motors / Diana Trujillo. Todos los derechos reservados.">
+<meta name="description" content="VOLTIA Motors: tienda de vehículos eléctricos e híbridos.">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body oncontextmenu="return false">
-<div class="watermark" aria-hidden="true">VOLTIA © 2026</div>
+<div class="watermark" aria-hidden="true">VOLTIA</div>
 
 <header class="nav">
   <a class="brand" href="#top" aria-label="VOLTIA inicio">

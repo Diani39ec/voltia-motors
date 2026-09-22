@@ -1,4 +1,4 @@
-/* VOLTIA Motors © 2026 Diana Trujillo — diseño original. Prohibida la reproducción. */
+/* VOLTIA Motors — estilos */
 :root{--bg:#0b0b18;--bg2:#141428;--ink:#f4f4ff;--mut:#a7a7c7;--neon:#00e5ff;--vio:#7c3aed;--rosa:#ff2d78;--car:#00e5ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Segoe UI,Arial,sans-serif;overflow-x:hidden}
